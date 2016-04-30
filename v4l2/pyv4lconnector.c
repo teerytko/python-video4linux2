@@ -91,6 +91,7 @@ int SetInput(int fd, int input)
 //  =====================================================================
 int SetStandard(int fd, v4l2_std_id std)
 {
+	printf("%s setting %llu\n", __func__, std);
 	return ioctl(fd, VIDIOC_S_STD, &std );
 }
 

@@ -9,7 +9,10 @@ from ctypes import *
 import os
 import Image as PILImage
 
-lib = cdll.LoadLibrary("./libpyv4l2.so")
+path = os.path.abspath(os.path.dirname(__file__))
+libpath = os.path.join(path, "libpyv4l2.so")
+
+lib = cdll.LoadLibrary(libpath)
 lib.Error.restype = c_char_p
 lib.MMap.restype = c_void_p
 
@@ -460,7 +463,7 @@ class Device(object):
 		"""Sets the device to the given standard.
 		"""
 		if lib.SetStandard(self.fd, standard) == -1:
-			raise Exception('Could not set standard %i:\t%i: %s' % 
+			raise Exception('Could not set standard %s:\t%s: %s' % 
 				(FindKey(self.standards, standard), 
 					lib.Errno(), 
 					lib.Error()
@@ -760,7 +763,9 @@ if __name__ == '__main__':
 			pass
 		
 		d.SetInput(0)
-		d.SetStandard(d.standards['NTSC'])
+		sd = d.standards['NTSC']
+		print "setting %d" % sd
+		d.SetStandard(sd)
 		
 		
 		print 'Pixel formats: '
