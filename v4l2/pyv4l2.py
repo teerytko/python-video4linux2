@@ -359,7 +359,7 @@ class Device(object):
 		
 		if self.fd == -1:
 			self.fd = 0
-			raise Exception('Could not open video device %s:\t%i: %s' % 
+			raise Exception('Could not open video device %s:\t%s: %s' % 
 				(dev, lib.Errno(), lib.Error())
 			)
 		
@@ -368,8 +368,9 @@ class Device(object):
 	# -------------------------------------------------------------------
 	def Close(self):
 		if self.fd:
-			lib.Close(fd)
-		
+			lib.Close(self.fd)
+			self.fd = 0
+
 	# -------------------------------------------------------------------
 	def QueryCaps(self):
 		"""Queries the driver for what this card is capable of.
