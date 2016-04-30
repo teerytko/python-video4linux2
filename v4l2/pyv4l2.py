@@ -470,6 +470,20 @@ class Device(object):
 					lib.Error()
 				)
 			)		
+
+	# -------------------------------------------------------------------
+	def GetStandard(self):
+		"""Sets the device to the given standard.
+		"""
+		standard = 0
+		if lib.GetStandard(self.fd, standard) == -1:
+			raise Exception('Could not get standard %s:\t%s: %s' %
+				(FindKey(self.standards, standard),
+					lib.Errno(),
+					lib.Error()
+				)
+			)
+		return standard
 			
 	# -------------------------------------------------------------------
 	def SetField(self, field):
@@ -764,7 +778,8 @@ if __name__ == '__main__':
 			pass
 		
 		d.SetInput(0)
-		sd = d.standards['NTSC']
+		print d.GetStandard()
+		sd = d.standards['PAL_60']
 		print "setting %d" % sd
 		d.SetStandard(sd)
 		

@@ -1,0 +1,9 @@
+{
+  "devices": [{
+    "dev": "/dev/video0",
+    "driver": "uvcvideo",
+    "card": "FJ Camera",
+    "businfo": "usb-0000:00:14.0-4",
+    "caps": ["Capture", "Streaming"]
+  }]
+}

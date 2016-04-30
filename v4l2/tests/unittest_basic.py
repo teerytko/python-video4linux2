@@ -29,7 +29,7 @@ class TestDeviceBasics(unittest.TestCase):
         self.assertTrue(d)
         d.Close()
         self.assertEquals(d.fd, 0)
-        
+
 
 if __name__ == '__main__':
     unittest.main()
