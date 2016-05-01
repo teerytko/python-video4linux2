@@ -1,2 +1,4 @@
 *.pyc
+*.o
 .tags*
+v4l:2/libpyv4l2.so

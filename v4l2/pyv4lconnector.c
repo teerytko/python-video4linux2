@@ -91,13 +91,17 @@ int SetInput(int fd, int input)
 //  =====================================================================
 int GetStandard(int fd, v4l2_std_id* std)
 {
-	return ioctl(fd, VIDIOC_S_STD, std);
+	v4l2_std_id temp = 0;
+	int ret = 0;
+	ret = ioctl(fd, VIDIOC_G_STD, &temp);
+	*std = temp;
+	return ret;
 }
 
 //  =====================================================================
 int SetStandard(int fd, v4l2_std_id std)
 {
-	return ioctl(fd, VIDIOC_S_STD, &std );
+	return ioctl(fd, VIDIOC_S_STD, &std);
 }
 
 //  =====================================================================

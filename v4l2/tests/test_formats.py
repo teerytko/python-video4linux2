@@ -17,7 +17,7 @@ class TestDeviceFormats(unittest.TestCase):
 
     def setUp(self):
         self.config = json.load(open(self.VIDEODEVS_PATH, "r"))
-        self.devconfig = self.config['devices'][0]
+        self.devconfig = self.config['devices'][1]
         self.device = Device(str(self.devconfig['dev']))
 
     def tearDown(self):

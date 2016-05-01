@@ -475,15 +475,15 @@ class Device(object):
 	def GetStandard(self):
 		"""Sets the device to the given standard.
 		"""
-		standard = 0
-		if lib.GetStandard(self.fd, standard) == -1:
+		standard = c_ulonglong()
+		if lib.GetStandard(self.fd, byref(standard)) == -1:
 			raise Exception('Could not get standard %s:\t%s: %s' %
 				(FindKey(self.standards, standard),
 					lib.Errno(),
 					lib.Error()
 				)
 			)
-		return standard
+		return standard.value
 			
 	# -------------------------------------------------------------------
 	def SetField(self, field):

@@ -5,5 +5,12 @@
     "card": "FJ Camera",
     "businfo": "usb-0000:00:14.0-4",
     "caps": ["Capture", "Streaming"]
+  },
+  {
+    "dev": "/dev/video1",
+    "driver": "vivi",
+    "card": "vivi",
+    "businfo": "vivi-000",
+    "caps": ["Capture", "ReadWrite", "Streaming"]
   }]
 }
